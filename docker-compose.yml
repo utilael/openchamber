@@ -1,4 +1,15 @@
 services:
+  openchamber-init:
+    image: alpine:latest
+    user: root
+    command: >
+      sh -c "
+        mkdir -p /home/openchamber/.config/openchamber &&
+        chown -R 1000:1000 /home/openchamber/.config/openchamber
+      "
+    volumes:
+      - openchamber-config:/home/openchamber/.config/openchamber
+
   openchamber:
     build:
       context: .

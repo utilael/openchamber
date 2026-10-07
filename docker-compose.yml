@@ -5,10 +5,25 @@ services:
     command: >
       sh -c "
         mkdir -p /home/openchamber/.config/openchamber &&
-        chown -R 1000:1000 /home/openchamber/.config/openchamber
+        chown -R 1000:1000 /home/openchamber/.config/openchamber &&
+        mkdir -p /home/openchamber/.local/share/opencode &&
+        chown -R 1000:1000 /home/openchamber/.local/share/opencode &&
+        mkdir -p /home/openchamber/.local/state/opencode &&
+        chown -R 1000:1000 /home/openchamber/.local/state/opencode &&
+        mkdir -p /home/openchamber/.config/opencode &&
+        chown -R 1000:1000 /home/openchamber/.config/opencode &&
+        mkdir -p /home/openchamber/.ssh &&
+        chown -R 1000:1000 /home/openchamber/.ssh&&
+        mkdir -p /home/openchamber/workspaces &&
+        chown -R 1000:1000 /home/openchamber/workspaces
       "
     volumes:
       - openchamber-config:/home/openchamber/.config/openchamber
+      - opencode-share:/home/openchamber/.local/share/opencode
+      - opencode-state:/home/openchamber/.local/state/opencode
+      - opencode-config:/home/openchamber/.config/opencode
+      - openchamber-ssh:/home/openchamber/.ssh
+      - openchamber-workspaces:/home/openchamber/workspaces
 
   openchamber:
     build:

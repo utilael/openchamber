@@ -52,3 +52,8 @@ volumes:
   opencode-config:
   openchamber-ssh:
   openchamber-workspaces:
+
+networks:
+  default:
+    external: true
+    name: bridge_default
